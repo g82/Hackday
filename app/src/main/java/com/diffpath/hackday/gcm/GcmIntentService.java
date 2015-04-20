@@ -13,6 +13,7 @@ import android.util.Log;
 import com.diffpath.hackday.MainActivity;
 import com.diffpath.hackday.R;
 import com.diffpath.hackday.actions.Findme;
+import com.diffpath.hackday.actions.Katalk;
 import com.diffpath.hackday.actions.Loveyou;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -67,6 +68,10 @@ public class GcmIntentService extends IntentService {
 
             case 2:
 
+                break;
+
+            case 4:
+                Katalk.alert(this);
                 break;
 
             default:
