@@ -5,13 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.diffpath.hackday.gcm.GcmRegTask;
 import com.diffpath.hackday.gcm.GcmUtils;
 
 
-public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTaskListener {
+public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTaskListener, View.OnClickListener {
 
     private static final String TAG = "MainActivity";
 
@@ -34,6 +36,50 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
             Toast.makeText(this, regid, Toast.LENGTH_LONG).show();
         }
 
+        Button btn1 = (Button) findViewById(R.id.btn1);
+        Button btn2 = (Button) findViewById(R.id.btn1);
+        Button btn3 = (Button) findViewById(R.id.btn1);
+        Button btn4 = (Button) findViewById(R.id.btn1);
+        Button btn5 = (Button) findViewById(R.id.btn1);
+        Button btn6 = (Button) findViewById(R.id.btn1);
+        Button btn7 = (Button) findViewById(R.id.btn1);
+        Button btn8 = (Button) findViewById(R.id.btn1);
+
+        btn1.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v){
+        switch (v.getId())
+        {
+            case R.id.btn1:
+                break;
+
+            case R.id.btn2:
+                break;
+
+            case R.id.btn3:
+                break;
+
+            case R.id.btn4:
+                break;
+
+            case R.id.btn5:
+                break;
+
+            case R.id.btn6:
+                break;
+
+            case R.id.btn7:
+                break;
+
+            case R.id.btn8:
+                break;
+
+            default:
+                break;
+        }
     }
 
     @Override
