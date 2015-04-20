@@ -5,13 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.diffpath.hackday.MainActivity;
 import com.diffpath.hackday.R;
-import com.diffpath.hackday.actions.Action;
 import com.diffpath.hackday.actions.Findme;
 import com.diffpath.hackday.actions.Loveyou;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -27,6 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class GcmIntentService extends IntentService {
 
+    private SharedPreferences pref;
     private static final String TAG = "GcmIntentService";
     private final static AtomicInteger c = new AtomicInteger(0);
 
@@ -45,13 +46,14 @@ public class GcmIntentService extends IntentService {
 
         Log.d(TAG, data.getExtras().toString());
 
+
         String actionStr = data.getStringExtra("default");
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        int code = pref.getInt(actionStr, -1);
 
-        int actionType = Integer.valueOf(actionStr);
 
-
-        switch (actionType) {
-            case Action.FINDME:
+        switch (code) {
+            case 0:
                 //나를 찾아줘
                 //휴대전화 찾기
 
@@ -59,11 +61,11 @@ public class GcmIntentService extends IntentService {
 
                 break;
 
-            case Action.LOVEYOU:
+            case 1:
                 Loveyou.sendMessage();
                 break;
 
-            case Action.PLAYSUZY:
+            case 2:
 
                 break;
 
