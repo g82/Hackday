@@ -14,6 +14,7 @@ import com.diffpath.hackday.R;
 import com.diffpath.hackday.actions.Action;
 import com.diffpath.hackday.actions.Findme;
 import com.diffpath.hackday.actions.Loveyou;
+import com.diffpath.hackday.actions.PlaySuzy;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -64,7 +65,7 @@ public class GcmIntentService extends IntentService {
                 break;
 
             case Action.PLAYSUZY:
-
+                PlaySuzy.playit(this);
                 break;
 
             default:

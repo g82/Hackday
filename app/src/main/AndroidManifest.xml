@@ -52,10 +52,19 @@
 
         <activity android:name=".DefineActionActivity"/>
 
+
         <activity
             android:name=".actions.FindmeActivity"
             android:theme="@style/LandScapeFull"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".actions.PlaySuzyActivity"
+            android:theme="@style/LandScapeFull"
+            android:screenOrientation="landscape" />
+
+
+
     </application>
 
 </manifest>

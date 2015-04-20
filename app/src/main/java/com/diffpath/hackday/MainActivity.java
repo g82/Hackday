@@ -27,13 +27,13 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
     private static final String SENDER_ID = "870124306474";
     private SharedPreferences pref;
 
-    //GCM SERVER KEY AIzaSyAEivQlbVQY3uSz1iuoq7p9gTAor8JBKpk
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         pref = getSharedPreferences("pref", MODE_PRIVATE);
 
         String regid = GcmUtils.getRegistrationId(this);
@@ -109,6 +109,8 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
                 DisplayItem();
             }
         }
+
+
     }
 
     private void DisplayItem()
