@@ -15,6 +15,9 @@ import com.diffpath.hackday.actions.Action;
 import com.diffpath.hackday.actions.Findme;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -42,19 +45,12 @@ public class GcmIntentService extends IntentService {
     // a GCM message.
     private void doAction(Intent data) {
 
-        showNotification(data);
+        Log.d(TAG, data.getExtras().toString());
 
-        /*
-        String actionStr = data.getStringExtra("actionType");
+        String actionStr = data.getStringExtra("default");
 
-        int actionType = -1;
+        int actionType = Integer.valueOf(actionStr);
 
-        if (actionStr == null) {
-            actionType = -1;
-        }
-        else {
-            actionType = Integer.valueOf(actionStr);
-        }
 
         switch (actionType) {
             case Action.FINDPHONE:
@@ -75,17 +71,10 @@ public class GcmIntentService extends IntentService {
                 showNotification(data);
                 break;
         }
-        */
+
     }
 
     private void showNotification(Intent data) {
-
-        
-
-        Log.d("gcmdata", data.getExtras().toString());
-
-        String title = data.getStringExtra("title");
-        String content = data.getStringExtra("content");
 
 
         NotificationManager mNotificationManager = (NotificationManager)
@@ -100,8 +89,8 @@ public class GcmIntentService extends IntentService {
                 new NotificationCompat.Builder(this)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle(title)
-                        .setContentText(content)
+//                        .setContentTitle()
+//                        .setContentText(message)
                         .setAutoCancel(true);
 
         mBuilder.setContentIntent(contentIntent);

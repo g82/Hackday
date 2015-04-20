@@ -1,6 +1,11 @@
 package com.diffpath.hackday.actions;
 
 import android.content.Context;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.widget.Toast;
 
@@ -9,12 +14,14 @@ import android.widget.Toast;
  */
 public class Findme {
 
-    public static void alert(Context mContext) {
+    public static void alert(final Context mContext) {
 
         Vibrator vibe = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-        vibe.vibrate(5000);
+        vibe.vibrate(2500);
 
-        Toast.makeText(mContext, "나를 찾아줘", Toast.LENGTH_LONG).show();
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Ringtone r = RingtoneManager.getRingtone(mContext, notification);
+        r.play();
 
     }
 

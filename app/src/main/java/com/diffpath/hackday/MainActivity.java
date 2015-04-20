@@ -16,6 +16,9 @@ import com.diffpath.hackday.gcm.GcmRegTask;
 import com.diffpath.hackday.gcm.GcmUtils;
 import com.diffpath.hackday.object.ActionObject;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 
@@ -28,6 +31,7 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
     private SharedPreferences pref;
 
     //GCM SERVER KEY AIzaSyAEivQlbVQY3uSz1iuoq7p9gTAor8JBKpk
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
