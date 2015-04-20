@@ -8,16 +8,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diffpath.hackday.gcm.GcmRegTask;
 import com.diffpath.hackday.gcm.GcmUtils;
 import com.diffpath.hackday.object.ActionObject;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -51,23 +48,15 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
 
         setLists();
 
-        Button btn1 = (Button) findViewById(R.id.btn1);
-        Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
-        Button btn4 = (Button) findViewById(R.id.btn4);
-        Button btn5 = (Button) findViewById(R.id.btn5);
-        Button btn6 = (Button) findViewById(R.id.btn6);
-        Button btn7 = (Button) findViewById(R.id.btn7);
-        Button btn8 = (Button) findViewById(R.id.btn8);
+        LinearLayout btn1 = (LinearLayout) findViewById(R.id.btn1);
+        LinearLayout btn2 = (LinearLayout) findViewById(R.id.btn2);
+        LinearLayout btn3 = (LinearLayout) findViewById(R.id.btn3);
+        LinearLayout btn4 = (LinearLayout) findViewById(R.id.btn4);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
-        btn6.setOnClickListener(this);
-        btn7.setOnClickListener(this);
-        btn8.setOnClickListener(this);
 
         DisplayItem();
 
@@ -76,6 +65,7 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
     @Override
     public void onClick(View v){
         int btn_no = 0;
+
         switch (v.getId())
         {
             case R.id.btn1:
@@ -94,22 +84,6 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
                 btn_no = 4;
                 break;
 
-            case R.id.btn5:
-                btn_no = 5;
-                break;
-
-            case R.id.btn6:
-                btn_no = 6;
-                break;
-
-            case R.id.btn7:
-                btn_no = 7;
-                break;
-
-            case R.id.btn8:
-                btn_no = 8;
-                break;
-
             default:
                 break;
         }
@@ -122,18 +96,18 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
     public void onActivityResult(int requestCode, int resultCode, Intent intent){
 
         super.onActivityResult(requestCode, resultCode, intent);
-        switch(requestCode){
-            case 500:
+        if(requestCode == 500) {
+            if(resultCode == RESULT_OK) {
                 int btn = intent.getExtras().getInt("btn");
                 int action = intent.getExtras().getInt("action");
 
                 SharedPreferences.Editor editor = pref.edit();
-                editor.remove(btn+"");
-                editor.putInt(btn+"", action);
+                editor.remove(btn + "");
+                editor.putInt(btn + "", action);
                 editor.commit();
 
                 DisplayItem();
-                break;
+            }
         }
     }
 
@@ -143,10 +117,6 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
         TextView tv2 = (TextView) findViewById(R.id.explain2);
         TextView tv3 = (TextView) findViewById(R.id.explain3);
         TextView tv4 = (TextView) findViewById(R.id.explain4);
-        TextView tv5 = (TextView) findViewById(R.id.explain5);
-        TextView tv6 = (TextView) findViewById(R.id.explain6);
-        TextView tv7 = (TextView) findViewById(R.id.explain7);
-        TextView tv8 = (TextView) findViewById(R.id.explain8);
 
         if(pref.getInt("1", -1) != -1)
         {
@@ -168,25 +138,7 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
             tv4.setText(action_lists.get(pref.getInt("4", -1)).getName());
         }
 
-        if(pref.getInt("5", -1) != -1)
-        {
-            tv5.setText(action_lists.get(pref.getInt("5", -1)).getName());
-        }
 
-        if(pref.getInt("6", -1) != -1)
-        {
-            tv6.setText(action_lists.get(pref.getInt("6", -1)).getName());
-        }
-
-        if(pref.getInt("7", -1) != -1)
-        {
-            tv7.setText(action_lists.get(pref.getInt("7", -1)).getName());
-        }
-
-        if(pref.getInt("8", -1) != -1)
-        {
-            tv1.setText(action_lists.get(pref.getInt("8", -1)).getName());
-        }
     }
 
     private void setLists()
