@@ -126,28 +126,28 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
         ImageView iv3 = (ImageView) findViewById(R.id.img3);
         ImageView iv4 = (ImageView) findViewById(R.id.img4);
 
+        if(pref.getInt("0", -1) != -1)
+        {
+            tv1.setText(action_lists.get(pref.getInt("0", -1)).getName());
+            iv1.setImageResource(action_lists.get(pref.getInt("0", -1)).getImg());
+        }
+
         if(pref.getInt("1", -1) != -1)
         {
-            tv1.setText(action_lists.get(pref.getInt("1", -1)).getName());
-            iv1.setImageResource(action_lists.get(pref.getInt("1", -1)).getImg());
+            tv2.setText(action_lists.get(pref.getInt("1", -1)).getName());
+            iv2.setImageResource(action_lists.get(pref.getInt("1", -1)).getImg());
         }
 
         if(pref.getInt("2", -1) != -1)
         {
-            tv2.setText(action_lists.get(pref.getInt("2", -1)).getName());
-            iv2.setImageResource(action_lists.get(pref.getInt("2", -1)).getImg());
+            tv3.setText(action_lists.get(pref.getInt("2", -1)).getName());
+            iv3.setImageResource(action_lists.get(pref.getInt("2", -1)).getImg());
         }
 
         if(pref.getInt("3", -1) != -1)
         {
-            tv3.setText(action_lists.get(pref.getInt("3", -1)).getName());
-            iv3.setImageResource(action_lists.get(pref.getInt("3", -1)).getImg());
-        }
-
-        if(pref.getInt("4", -1) != -1)
-        {
-            tv4.setText(action_lists.get(pref.getInt("4", -1)).getName());
-            iv4.setImageResource(action_lists.get(pref.getInt("4", -1)).getImg());
+            tv4.setText(action_lists.get(pref.getInt("3", -1)).getName());
+            iv4.setImageResource(action_lists.get(pref.getInt("3", -1)).getImg());
         }
 
 
