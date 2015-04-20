@@ -70,19 +70,19 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
         switch (v.getId())
         {
             case R.id.btn1:
-                btn_no = 1;
+                btn_no = 0;
                 break;
 
             case R.id.btn2:
-                btn_no = 2;
+                btn_no = 1;
                 break;
 
             case R.id.btn3:
-                btn_no = 3;
+                btn_no = 2;
                 break;
 
             case R.id.btn4:
-                btn_no = 4;
+                btn_no = 3;
                 break;
 
             default:
