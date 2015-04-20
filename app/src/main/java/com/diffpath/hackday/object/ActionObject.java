@@ -7,6 +7,7 @@ public class ActionObject {
     private int _id;
     private String _name;
     private String _description;
+    private int _img;
 
     public ActionObject(){
         _id = 0;
@@ -42,5 +43,15 @@ public class ActionObject {
     public String getDescription()
     {
         return _description;
+    }
+
+    public void setImg(int val)
+    {
+        _img = val;
+    }
+
+    public int getImg()
+    {
+        return _img;
     }
 }
