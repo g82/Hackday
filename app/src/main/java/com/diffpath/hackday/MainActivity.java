@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,24 +119,33 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
         TextView tv3 = (TextView) findViewById(R.id.explain3);
         TextView tv4 = (TextView) findViewById(R.id.explain4);
 
+        ImageView iv1 = (ImageView) findViewById(R.id.img1);
+        ImageView iv2 = (ImageView) findViewById(R.id.img2);
+        ImageView iv3 = (ImageView) findViewById(R.id.img3);
+        ImageView iv4 = (ImageView) findViewById(R.id.img4);
+
         if(pref.getInt("1", -1) != -1)
         {
             tv1.setText(action_lists.get(pref.getInt("1", -1)).getName());
+            iv1.setImageResource(action_lists.get(pref.getInt("1", -1)).getImg());
         }
 
         if(pref.getInt("2", -1) != -1)
         {
             tv2.setText(action_lists.get(pref.getInt("2", -1)).getName());
+            iv2.setImageResource(action_lists.get(pref.getInt("2", -1)).getImg());
         }
 
         if(pref.getInt("3", -1) != -1)
         {
             tv3.setText(action_lists.get(pref.getInt("3", -1)).getName());
+            iv3.setImageResource(action_lists.get(pref.getInt("3", -1)).getImg());
         }
 
         if(pref.getInt("4", -1) != -1)
         {
             tv4.setText(action_lists.get(pref.getInt("4", -1)).getName());
+            iv4.setImageResource(action_lists.get(pref.getInt("4", -1)).getImg());
         }
 
 
@@ -148,12 +158,28 @@ public class MainActivity extends ActionBarActivity implements GcmRegTask.GcmTas
         obj.setId(0);
         obj.setDescription("휴대전화의 위치를 찾습니다");
         obj.setName("위치찾기");
+        obj.setImg(R.drawable.transmission3);
         action_lists.add(obj);
 
         obj = new ActionObject();
         obj.setId(1);
         obj.setDescription("여자친구에게 문자를 전송합니다");
         obj.setName("문자전송");
+        obj.setImg(R.drawable.message20);
+        action_lists.add(obj);
+
+        obj = new ActionObject();
+        obj.setId(2);
+        obj.setDescription("수지 영상이 나와요");
+        obj.setName("영상재생");
+        obj.setImg(R.drawable.television24);
+        action_lists.add(obj);
+
+        obj = new ActionObject();
+        obj.setId(3);
+        obj.setDescription("위치정보를 올릴겁니");
+        obj.setName("페이스북 작성");
+        obj.setImg(R.drawable.pencil108);
         action_lists.add(obj);
     }
 

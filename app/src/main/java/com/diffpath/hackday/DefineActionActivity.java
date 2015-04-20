@@ -54,12 +54,28 @@ public class DefineActionActivity extends ActionBarActivity {
         obj.setId(0);
         obj.setDescription("휴대전화의 위치를 찾습니다");
         obj.setName("위치찾기");
+        obj.setImg(R.drawable.transmission3);
         action_lists.add(obj);
 
         obj = new ActionObject();
         obj.setId(1);
         obj.setDescription("여자친구에게 문자를 전송합니다");
         obj.setName("문자전송");
+        obj.setImg(R.drawable.message20);
+        action_lists.add(obj);
+
+        obj = new ActionObject();
+        obj.setId(2);
+        obj.setDescription("수지 영상이 나와요");
+        obj.setName("영상재생");
+        obj.setImg(R.drawable.television24);
+        action_lists.add(obj);
+
+        obj = new ActionObject();
+        obj.setId(3);
+        obj.setDescription("위치정보를 올릴겁니");
+        obj.setName("페이스북 작성");
+        obj.setImg(R.drawable.pencil108);
         action_lists.add(obj);
     }
 
