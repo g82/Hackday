@@ -1,9 +1,8 @@
 package com.diffpath.hackday.actions;
 
 import android.content.Context;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.Vibrator;
@@ -11,12 +10,15 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.diffpath.hackday.R;
 
+import java.io.IOException;
+
 /**
  * Created by gamepari on 4/20/15.
  */
 public class FindmeActivity extends ActionBarActivity {
 
     PowerManager.WakeLock sCpuWakeLock;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +36,31 @@ public class FindmeActivity extends ActionBarActivity {
         sCpuWakeLock.acquire();
 
         Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibe.vibrate(2500);
+        vibe.vibrate(5000);
 
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        Ringtone r = RingtoneManager.getRingtone(this, notification);
-        r.play();
+        try {
+            AssetFileDescriptor afd =  getAssets().openFd("remix.mp3");
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mediaPlayer) {
+                    mediaPlayer.start();
+                }
+            });
+            mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            mediaPlayer.prepareAsync();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public void finish() {
-        super.finish();
         sCpuWakeLock.release();
-
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        super.finish();
     }
 }

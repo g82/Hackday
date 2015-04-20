@@ -13,10 +13,8 @@ import com.diffpath.hackday.MainActivity;
 import com.diffpath.hackday.R;
 import com.diffpath.hackday.actions.Action;
 import com.diffpath.hackday.actions.Findme;
+import com.diffpath.hackday.actions.Loveyou;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -53,7 +51,7 @@ public class GcmIntentService extends IntentService {
 
 
         switch (actionType) {
-            case Action.FINDPHONE:
+            case Action.FINDME:
                 //나를 찾아줘
                 //휴대전화 찾기
 
@@ -61,10 +59,12 @@ public class GcmIntentService extends IntentService {
 
                 break;
 
-            case 1:
+            case Action.LOVEYOU:
+                Loveyou.sendMessage();
                 break;
 
-            case 2:
+            case Action.PLAYSUZY:
+
                 break;
 
             default:

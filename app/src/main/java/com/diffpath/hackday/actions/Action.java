@@ -5,9 +5,11 @@ package com.diffpath.hackday.actions;
  */
 public class Action {
 
-    public static final int FINDPHONE = 0;
+    public static final int FINDME = 0;
 
+    public static final int LOVEYOU = 1;
 
+    public static final int PLAYSUZY = 2;
 
 
 }
