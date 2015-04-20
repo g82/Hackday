@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.diffpath.hackday.MainActivity;
 import com.diffpath.hackday.R;
+import com.diffpath.hackday.actions.Action;
+import com.diffpath.hackday.actions.Findme;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,7 +40,53 @@ public class GcmIntentService extends IntentService {
     // Put the message into a notification and post it.
     // This is just one simple example of what you might choose to do with
     // a GCM message.
-    private void sendNotification(String data) {
+    private void doAction(Intent data) {
+
+        showNotification(data);
+
+        /*
+        String actionStr = data.getStringExtra("actionType");
+
+        int actionType = -1;
+
+        if (actionStr == null) {
+            actionType = -1;
+        }
+        else {
+            actionType = Integer.valueOf(actionStr);
+        }
+
+        switch (actionType) {
+            case Action.FINDPHONE:
+                //나를 찾아줘
+                //휴대전화 찾기
+
+                Findme.alert(this);
+
+                break;
+
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            default:
+                showNotification(data);
+                break;
+        }
+        */
+    }
+
+    private void showNotification(Intent data) {
+
+        
+
+        Log.d("gcmdata", data.getExtras().toString());
+
+        String title = data.getStringExtra("title");
+        String content = data.getStringExtra("content");
+
 
         NotificationManager mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -51,8 +100,8 @@ public class GcmIntentService extends IntentService {
                 new NotificationCompat.Builder(this)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle(data)
-                        .setContentText(data)
+                        .setContentTitle(title)
+                        .setContentText(content)
                         .setAutoCancel(true);
 
         mBuilder.setContentIntent(contentIntent);
@@ -81,15 +130,15 @@ public class GcmIntentService extends IntentService {
              */
             if (GoogleCloudMessaging.
                     MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
-                //sendNotification("Send error: " + extras.toString());
+
             } else if (GoogleCloudMessaging.
                     MESSAGE_TYPE_DELETED.equals(messageType)) {
-                //sendNotification("Deleted messages on server: " +  extras.toString());
+
                 // If it's a regular GCM message, do some work.
             } else if (GoogleCloudMessaging.
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
 
-                sendNotification(intent.getStringExtra("message"));
+                doAction(intent);
 
             }
         }
