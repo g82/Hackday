@@ -77,6 +77,13 @@ public class DefineActionActivity extends ActionBarActivity {
         obj.setName("페이스북 작성");
         obj.setImg(R.drawable.pencil108);
         action_lists.add(obj);
+
+        obj = new ActionObject();
+        obj.setId(4);
+        obj.setDescription("이젠 당신도 인기남녀!");
+        obj.setName("까똑");
+        obj.setImg(R.drawable.support);
+        action_lists.add(obj);
     }
 
     private void sendResult(int i)
